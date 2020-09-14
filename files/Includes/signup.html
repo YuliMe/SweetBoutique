@@ -20,7 +20,7 @@
 <body>
     <div id='navBar'></div>
     <main>
-        <form onsubmit="submitForm()">
+        <form onsubmit="return submitForm()">
             <div class="form-fields">
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">הירשם</button>
+            <button type="submit" class="btn btn-primary" onclick="validateForm()">הירשם</button>
         </form>
     </main>
     <footer id='Footer'>

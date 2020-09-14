@@ -1,35 +1,61 @@
-async function submitForm() {
-    event.preventDefault();
-
+function getFormData() {
     var formData = Object.fromEntries(new FormData(document.querySelector("form")));
 
     formData.minPrice = parseInt(formData.minPrice);
     formData.maxPrice = parseInt(formData.maxPrice);
 
     formData.categories = Array.from(document.getElementById("categoriesGroup").querySelectorAll("input")).filter(e => e.checked).map(e => e.value);
+    return formData;
+}
 
-    if (formChecks(formData)) {
-        var response = await fetch("/api/signup", {
+async function submitForm() {
+    event.preventDefault();
+
+    let formData = getFormData();
+
+    if (validateForm(formData)) {
+        let response = await fetch("/api/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
         });
+
+        if (!response.ok) {
+            let body = await response.json();
+            alert(body);
+        } else {
+            localStorage.setItem('loginData', JSON.stringify({
+                email: formData.email,
+                password: formData.password,
+                name: formData.name
+            }));
+            location.replace('includes/orders.html');
+        }
+
+        return response.ok;
+    } else {
+        return false;
     }
 }
 
-function formChecks(formData) {
+function validateForm() {
+    let formData = getFormData();
     let valid = true;
 
     if (formData.maxPrice < formData.minPrice) {
         document.getElementById("maxPrice").setCustomValidity("מחיר מקסימלי צריך להיות גדול יותר או שווה למחיר המינימלי");
         valid = false;
+    } else {
+        document.getElementById("maxPrice").setCustomValidity("");
     }
 
-    if (formData.password !== formData.confPassword) {
+    if (formData.password.localeCompare(formData.confPassword)) {
         document.getElementById("confPassword").setCustomValidity("הסיסמה שונה ממה שהזנת");
         valid = false;
+    } else {
+        document.getElementById("confPassword").setCustomValidity("");
     }
 
     return valid;
