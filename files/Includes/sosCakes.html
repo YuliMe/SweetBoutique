@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.6, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+		<!-- Font Awesome icon kit-->
+		<script src="https://kit.fontawesome.com/c061aba482.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
+
+        
+        
+        <link rel="stylesheet" type="text/css" href="/CSS/style2.css">
+        
+    <title>SOS-CAKES</title>
+
+</head>
+
+<body>
+    <header>
+        <div id="navBar"> </div>
+    </header>
+
+    <main>
+		  
+	    <div class="jumbotron text-right">
+			<div class="container img-bg-text">
+    		    <header>
+    				<h1 class="heading1">SOS Cakes</h1>
+    				<p class="pheader"> מבחר עוגות על פי תבנית </p>
+    				<p class="p2header"> איך אתם אוהבים את העוגה שלכם?  </p>
+    			</header>
+    			
+    			
+    		    <div class="card col-6 background  mx-auto my-5" id="cake1"> <!-- Cheesecake (#1)-->
+    			    <form method="post" action="/Includes/PHP/orderFullfillment.php">
+                        <img src="/Includes/img/cheesecake-500x500.jpg" class="card-img-top img-fluid rounded-border-30px pt-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">עוגת גבינה קלאסית</h5>
+                            <p class="card-text">עוגת גבינה נחשבת לאחד מהקינוחים הנפוצים ביותר בעולם וככל הנראה לאחד מהוותיקים ביותר המכילים מוצר חלב שאינו חלב. ברחבי העולם ישנם סוגים רבים של עוגות גבינה שונות, חלקן גם ללא אפייה. עוגות גבינה פופולריות מאוד בישראל, ובמיוחד בתקופת חג השבועות שבו נהוג לאכול מאכלים חלביים.</p>
+                        </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gluten1" name="gluten">
+                                        <label class="custom-control-label" for="gluten1">ללא גלוטן</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <select class="custom-select" name="size">
+                                        <option selected>אנא בחרו קוטר עוגה</option>
+                                        <option value="size-1">8 סמ'</option>
+                                        <option value="size-2">20 סמ'</option>
+                                        <option value="size-3">36 סמ'</option>
+                                        <option value="size-4">75 סמ'</option>
+                                    </select>
+                                    <input type="hidden" name="flavor" value="cheese-vanilla">
+                                    <input type="hidden" name="icing" value="cheese">
+                                    <input type="hidden" name="filling" value="crumbs">
+                                    <input type="hidden" name="custom" value="false">
+                                </li>
+                            </ul>
+                    <div class="card-body">
+                        <div class="button"><button> המשך להשארת פרטים והזמנה</button></div>
+                    </div>
+                  </form>
+                </div>
+    			
+     			
+    		    <div class="card col-6 background  mx-auto mb-5" id="cake2"> <!-- Cake (#2)-->
+    			    <form method="post" action="/Includes/PHP/orderFullfillment.php">
+                        <img src="/Includes/img/applepie.jpg" class="card-img-top img-fluid rounded-border-30px pt-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">פאי תפוחים קלאסית</h5>
+                            <p class="card-text">עם השנים הפך פאי התפוחים לאחד מסמליה של ארצות הברית ולמעשה למאכל לאומי. הביטוי "אמריקאי כמו פאי תפוחים" ("as American as apple pie") מעיד על כך. מארק טוויין בספרו הרפתקאות האקלברי פין עושה שימוש במונח "פאי" (שהכוונה לפאי התפוחים) כשהוא מתאר דבר מה שהוא נעים או נוח ("You're always as polite as pie to them")</p>
+                        </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gluten2" name="gluten">
+                                        <label class="custom-control-label" for="gluten2">ללא גלוטן</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <select class="custom-select" name="size">
+                                        <option selected>אנא בחרו קוטר עוגה</option>
+                                        <option value="size-1">8 סמ'</option>
+                                        <option value="size-2">20 סמ'</option>
+                                        <option value="size-3">36 סמ'</option>
+                                        <option value="size-4">75 סמ'</option>
+                                    </select>
+                                    <input type="hidden" name="flavor" value="almond">
+                                    <input type="hidden" name="filling" value="apple-caramel">
+                                    <input type="hidden" name="icing" value="cream-caramel">
+                                    <input type="hidden" name="custom" value="false">
+                                </li>
+                            </ul>
+                    <div class="card-body">
+                        <div class="button"><button> המשך להשארת פרטים והזמנה</button></div>
+                    </div>
+                  </form>
+                </div>
+    			
+    			
+    		    <div class="card col-6 background  mx-auto mb-5" id="cake3"> <!-- Cake (#3)-->
+    			    <form method="post" action="/Includes/PHP/orderFullfillment.php">
+                        <img src="/Includes/img/chocolatecake.jpeg" class="card-img-top img-fluid rounded-border-30px pt-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">עוגת שוקולד מושחתת</h5>
+                            <p class="card-text"> כשבא לכם הרבה שוקולד עם קצת שוקולד בצד ועוד שוקולד מעל.</p>
+                        </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gluten3" name="gluten">
+                                        <label class="custom-control-label" for="gluten3">ללא גלוטן</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <select class="custom-select" name="size">
+                                        <option selected>אנא בחרו קוטר עוגה</option>
+                                        <option value="size-1">8 סמ'</option>
+                                        <option value="size-2">20 סמ'</option>
+                                        <option value="size-3">36 סמ'</option>
+                                        <option value="size-4">75 סמ'</option>
+                                    </select>
+                                    <input type="hidden" name="flavor" value="chocolate">
+                                    <input type="hidden" name="filling" value="chocolate">
+                                    <input type="hidden" name="icing" value="chocolate">
+                                    <input type="hidden" name="custom" value="false">
+                                </li>
+                            </ul>
+                    <div class="card-body">
+                        <div class="button"><button> המשך להשארת פרטים והזמנה</button></div>
+                    </div>
+                  </form>
+                </div>
+    			
+    			
+    		    <div class="card col-6 background  mx-auto mb-5" id="cake4"> <!-- Cake (#4)-->
+    			    <form method="post" action="/Includes/PHP/orderFullfillment.php">
+                        <img src="/Includes/img/mousse-cream-caramel.jpg" class="card-img-top img-fluid rounded-border-30px pt-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">עוגת מוס ריבת חלב קרמל</h5>
+                            <p class="card-text"> עוגה נמסה בפה שמשאירה טעם לעוד</p>
+                        </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gluten4" name="gluten">
+                                        <label class="custom-control-label" for="gluten4">ללא גלוטן</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <select class="custom-select" name="size">
+                                        <option selected>אנא בחרו קוטר עוגה</option>
+                                        <option value="size-1">8 סמ'</option>
+                                        <option value="size-2">20 סמ'</option>
+                                        <option value="size-3">36 סמ'</option>
+                                        <option value="size-4">75 סמ'</option>
+                                    </select>
+                                    <input type="hidden" name="flavor" value="lotus-cookies">
+                                    <input type="hidden" name="filling" value="caramel-mousse">
+                                    <input type="hidden" name="icing" value="buttermilk">
+                                    <input type="hidden" name="custom" value="false">
+                                </li>
+                            </ul>
+                    <div class="card-body">
+                        <div class="button"><button> המשך להשארת פרטים והזמנה</button></div>
+                    </div>
+                  </form>
+                </div>
+			</div>
+        </div>
+		<hr>
+    </main>
+		
+		
+		
+
+
+		
+		
+		
+		
+
+    <footer id='Footer'></footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="/JS/masterpage.js"></script>
+
+</body>
+
+</html>

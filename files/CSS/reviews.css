@@ -1,0 +1,66 @@
+footer{
+	display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 3.5rem;
+}
+
+.jumbotron {
+    background-color: lightpink;
+	background-image: url("../Includes/img/cupcakesbg.jpg");
+	background-size: cover;
+	max-width: 100%;
+    height: auto;
+    background-position:center;
+
+}
+
+.img-bg-text{
+    text-shadow: #888 2px 2px 3px;
+    font-size: 1.5em;
+}
+
+header{
+    margin-bottom: 50px;
+}
+
+h1{
+	font-weight:bold;
+}
+.details{
+	font-weight: bold;
+	text-align: center;
+}
+
+*{
+	direction: rtl;
+	box-sizing:border-box;
+    margin-left: 100px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.reviewbox{
+    border-radius: 20px;
+    background-color: lightblue;
+    padding: 20px;
+	opacity:0.9;
+}
+
+.buttons{
+    border-style: solid;
+    border-color: #df80ff;
+    border-radius: 15px;
+    color:white;
+    background-color: pink;
+    border-width: medium;
+    font-weight: bold;
+    margin-right:100px;
+    margin-top: 20px;
+	text-align:center;
+}
+

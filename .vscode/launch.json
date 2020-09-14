@@ -13,7 +13,7 @@
             "runtimeArgs": [
                 "--inspect=3000"
             ],
-            "program": "${workspaceRoot}/index.js",
+            "program": "${workspaceRoot}/server/index.js",
             "restart": true,
             "port": 3000,
             "console": "integratedTerminal",
