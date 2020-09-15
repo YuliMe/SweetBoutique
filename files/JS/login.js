@@ -13,7 +13,7 @@ async function submitForm() {
         alert("שם משתמש או סיסמה אינם נכונים")
     } else {
         let body = await response.json();
-        location.replace('/index.html');
+        goToHomepage();
     }
 
     return response.ok;
@@ -21,7 +21,7 @@ async function submitForm() {
 
 function checkLogin() {
     if (JSON.parse(getCookie('loginData'))) {
-        location.replace('/index.html');
+        goToHomepage();
     }
 }
 

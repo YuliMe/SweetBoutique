@@ -19,17 +19,21 @@ app.get('/api/manage/getapprovals', async (req, res) => {
     res.send(rows);
 });
 
+app.post('/api/manage/approve', async (req, res) => {
+    let connection = await sqlConnection();
+    let [rows, fields] = await connection.execute('update bakers set isConfirmed = 1 where email = ?', [req.body.email]);
+    connection.end();
+    res.sendStatus(200);
+});
+
 app.post('/api/signup/conditure', async (req, res) => {
     let formData = req.body;
-
-    let connection = await sqlConnection();
     try {
         try {
-            let [rows, fields] = await connection.execute('insert into users (email,password) VALUES (?,?)',
-                [formData.email, formData.password]);
+            let [rows, fields] = await query('insert into users (email,password) VALUES (?,?)', [formData.email, formData.password]);
         } catch (error) {}
 
-        let [rows, fields] = await connection.execute('insert into bakers (email,name,phone,businessName,minPrice,maxPrice,homepage,categories,isConfirmed) values (?,?,?,?,?,?,?,?,0)',
+        let [rows, fields] = await query('insert into bakers (email,name,phone,businessName,minPrice,maxPrice,homepage,categories,isConfirmed) values (?,?,?,?,?,?,?,?,0)',
             [formData.email, formData.name, formData.phone, formData.businessName, formData.minPrice, formData.maxPrice, formData.homepage, formData.categories]);
 
         res.sendStatus(200);
@@ -37,15 +41,13 @@ app.post('/api/signup/conditure', async (req, res) => {
         console.log(err);
         res.status(500).send(JSON.stringify(err.message));
     }
-    connection.end();
 });
 
 
 app.post('/api/login', async (req, res) => {
     let formData = req.body;
-    let connection = await sqlConnection();
     try {
-        let [rows, fields] = await connection.execute('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from bakers where email = ?) as isBaker,(select count(*) from admins where email = ?) as isAdmin from users',
+        let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from bakers where email = ?) as isBaker,(select count(*) from admins where email = ?) as isAdmin from users',
             [formData.email, formData.password, formData.email, formData.email]);
 
         if (rows[0].hasUser === 1) {
@@ -63,7 +65,6 @@ app.post('/api/login', async (req, res) => {
         console.log(err);
         res.status(500).send(JSON.stringify(err.message));
     }
-    connection.end();
 });
 
 app.get('/api/logoff', (req, res) => {
@@ -86,15 +87,20 @@ function sqlConnection() {
 }
 
 async function checkIsAdmin(req, res, next) {
-    let connection = await sqlConnection();
     let loginData = JSON.parse(req.cookies.loginData);
-    let [rows, fields] = await connection.execute('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from admins where email = ?) as isAdmin from users',
-        [loginData.email, loginData.password, loginData.email]);
-    connection.end();
+    let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from admins where email = ?) as isAdmin from users', [loginData.email, loginData.password, loginData.email]);
 
     if (rows[0].hasUser === 1 && rows[0].isAdmin === 1) {
         next();
     } else {
         res.sendStatus(401);
     }
+}
+
+async function query(query, params) {
+    let connection = await sqlConnection();
+    let [rows, fields] = await connection.execute(query, params);
+    connection.end();
+
+    return [rows, fields];
 }

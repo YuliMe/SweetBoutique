@@ -13,3 +13,7 @@ function getCookie(cname) {
     }
     return null;
 }
+
+function goToHomepage() {
+    location.replace("/index.html");
+}

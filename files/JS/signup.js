@@ -26,7 +26,7 @@ async function submitForm() {
             let body = await response.json();
             alert(body);
         } else {
-            location.replace('/includes/login.html');
+            goToHomepage();
         }
 
         return response.ok;
