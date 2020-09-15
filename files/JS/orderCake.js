@@ -13,7 +13,7 @@ async function getConditure() {
         conditure.categories = JSON.parse(conditure.categories);
         conditure.desserts = JSON.parse(conditure.desserts);
         conditure.address = JSON.parse(conditure.address);
-        setConditureInfo();
+        setOrderInfo();
     } else {
         alert('לא נמצא קונדיטור מתאים');
     }
@@ -71,7 +71,7 @@ async function orderCake() {
     }
 }
 
-function setConditureInfo() {
+function setOrderInfo() {
     document.getElementById('businessName').innerHTML = conditure.businessName;
     document.getElementById('name').innerHTML = conditure.name;
     document.getElementById('phone').innerHTML = conditure.phone;

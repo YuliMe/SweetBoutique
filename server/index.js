@@ -34,15 +34,31 @@ app.get("/api/getConditure/:email", async (req, res) => {
     }
 });
 
+app.get("/api/getOrder/:orderid", async (req, res) => {
+    let [rows, fields] = await query('select orderid,isReady,timeOfOrder,orderForDate,comments,feedbackRating,feedbackComment from orders where orderid = ?', [req.params.orderid]);
+    if (rows.length === 1) {
+        res.send(rows[0]);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
 app.post('/api/ordercake', async (req, res) => {
     let formData = req.body;
     let uuid = uuidv4();
-    let [rows, fields] = await query('insert into orders (orderNumber,conditureEmail,customerAddress,customerName,customerPhone,customerEmail,orderForDate, comments,isReady) VALUES(?,?,?,?,?,?,?,?,0)', [uuid, formData.conditureEmail, formData.customerAddress, formData.customerName, formData.customerPhone, formData.customerEmail, formData.orderDate, formData.comments]);
+    let [rows, fields] = await query('insert into orders (orderid,conditureEmail,customerAddress,customerName,customerPhone,customerEmail,orderForDate, comments,isReady) VALUES(?,?,?,?,?,?,?,?,0)', [uuid, formData.conditureEmail, formData.customerAddress, formData.customerName, formData.customerPhone, formData.customerEmail, formData.orderDate, formData.comments]);
     if (rows.affectedRows === 1) {
         res.send(JSON.stringify(uuid));
     } else {
         res.sendStatus(404);
     }
+});
+
+app.post('/api/sendfeedback', async (req, res) => {
+    let formData = req.body;
+    let [rows, fields] = await query('update orders set feedbackRating = ?, feedbackComment = ? where orderid = ? and feedbackRating is null',
+        [formData.feedbackRating, formData.feedbackComment, formData.orderId]);
+    res.sendStatus(200);
 });
 
 app.get('/api/getConditures', async (req, res) => {

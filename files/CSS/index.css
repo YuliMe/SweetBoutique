@@ -42,6 +42,7 @@ body {
 }
 
 * {
+    text-align: start;
     direction: rtl;
 }
 
@@ -93,4 +94,9 @@ header {
 
 button {
     width: fit-content;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
 }
