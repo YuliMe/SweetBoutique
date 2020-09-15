@@ -4,7 +4,10 @@ function getFormData() {
     formData.minPrice = parseInt(formData.minPrice);
     formData.maxPrice = parseInt(formData.maxPrice);
 
+    formData.desserts = Array.from(document.getElementById("dessertsGroup").querySelectorAll("input")).filter(e => e.checked).map(e => e.value);
     formData.categories = Array.from(document.getElementById("categoriesGroup").querySelectorAll("input")).filter(e => e.checked).map(e => e.value);
+
+    formData.address = address;
     return formData;
 }
 
@@ -56,49 +59,27 @@ function validateForm() {
     return valid;
 }
 
+let address;
 
-function setCategories() {
-    let categories = ["עוגות ראווה",
-        "עוגות מעוצבות",
-        "עוגות יום הולדת",
-        "שמרים ומאפים",
-        "עוגות מספרים",
-        "קאפקייקס",
-        "קינוחים אישיים",
-        "מקרונים",
-        "חתונה",
-        "עוגות מעוצבות לילדים",
-        "מגשי אירוח",
-        "עוגות ביתיות",
-        "עוגות טבעוניות",
-        "עוגות ללא גלוטן",
-        "ימי כיף לעובדים",
-        "עוגיות",
-        "קינוחי כוסות",
-        "מארזים לחגים ומועדים",
-        "תעודת כשרות",
-        "טבעוני",
-        "ללא גלוטן",
-        "ללא לקטוז",
-        "משלוחים",
-        "פרווה"
-    ]
-
-    categories.forEach(c => {
-
-        let element = document.createElement("div");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        input.value = c;
-        input.name = "categories";
-        element.appendChild(input);
-
-        let label = document.createElement("label");
-        label.innerHTML = c;
-        element.appendChild(label);
-
-        document.getElementById("categoriesGroup").appendChild(element);
+$(document).ready(() => {
+    var placesAutocomplete = places({
+        appId: 'plMG7UTLTJ0G',
+        apiKey: '658e0a072c4fa950e8b4816f9effa6f6',
+        container: document.querySelector('#address-input')
+    }).configure({
+        countries: ['il'],
+        type: 'address',
+        language: 'he',
+        hitsPerPage: 4
     });
-}
 
-setCategories();
+    placesAutocomplete.on('change', function (e) {
+        address = {
+            name: e.suggestion.value,
+            latlng: e.suggestion.latlng
+        }
+    });
+
+    setCategories("dessertsGroup", desserts);
+    setCategories("categoriesGroup", categories);
+})

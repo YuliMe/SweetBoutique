@@ -18,8 +18,10 @@ async function loadApprovals() {
                 <td>${baker.name}</td>
                 <td>${baker.phone}</td>
                 <td>${baker.businessName}</td>
+                <td>${JSON.parse(baker.address).name}</td>
                 <td>${baker.maxPrice} - ${baker.minPrice}</td>
                 <td>${baker.homepage}</td>
+                <td>${JSON.parse(baker.desserts).join()}</td>
                 <td>${JSON.parse(baker.categories).join()}</td>
                 <td><button class="btn btn-primary" onclick="approve('${baker.email}')">אשר</button></td>
                 </tr>`).get(0);

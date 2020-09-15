@@ -14,15 +14,6 @@ form {
     max-width: 500px;
 }
 
-.form-group>label,
-.form-group>small {
-    float: right;
-}
-
-button {
-    width: fit-content;
-}
-
 .price-range {
     width: 100%;
     display: flex;
@@ -41,16 +32,16 @@ button {
     float: right;
 }
 
-#categoriesGroup {
+.checkboxGroup {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
 
-#categoriesGroup>* {
+.checkboxGroup>* {
     margin-left: 1vh;
 }
 
-#categoriesGroup input {
+.checkboxGroup input {
     margin-left: 0.5vh;
 }

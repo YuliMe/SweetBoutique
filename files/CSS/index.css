@@ -85,3 +85,12 @@ header {
     opacity: 0;
     transition: '1s';
 }
+
+.form-group>label,
+.form-group>small {
+    float: right;
+}
+
+button {
+    width: fit-content;
+}

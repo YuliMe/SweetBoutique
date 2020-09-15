@@ -13,17 +13,18 @@ app.use(express.static('files'));
 app.use('/api/manage/*', checkIsAdmin);
 
 app.get('/api/manage/getapprovals', async (req, res) => {
-    let connection = await sqlConnection();
-    let [rows, fields] = await connection.execute('select * from bakers where isConfirmed = 0');
-    connection.end();
+    let [rows, fields] = await query('select * from bakers where isConfirmed = 0');
     res.send(rows);
 });
 
 app.post('/api/manage/approve', async (req, res) => {
-    let connection = await sqlConnection();
-    let [rows, fields] = await connection.execute('update bakers set isConfirmed = 1 where email = ?', [req.body.email]);
-    connection.end();
+    let [rows, fields] = await query('update bakers set isConfirmed = 1 where email = ?', [req.body.email]);
     res.sendStatus(200);
+});
+
+app.get('/api/getConditures', async (req, res) => {
+    let [rows, fields] = await query('select * from bakers where isConfirmed = 1');
+    res.send(rows);
 });
 
 app.post('/api/signup/conditure', async (req, res) => {
@@ -33,8 +34,15 @@ app.post('/api/signup/conditure', async (req, res) => {
             let [rows, fields] = await query('insert into users (email,password) VALUES (?,?)', [formData.email, formData.password]);
         } catch (error) {}
 
-        let [rows, fields] = await query('insert into bakers (email,name,phone,businessName,minPrice,maxPrice,homepage,categories,isConfirmed) values (?,?,?,?,?,?,?,?,0)',
-            [formData.email, formData.name, formData.phone, formData.businessName, formData.minPrice, formData.maxPrice, formData.homepage, formData.categories]);
+        let [rows, fields] = await query('insert into bakers (email,name,phone,businessName,minPrice,maxPrice,homepage,categories,desserts,address,isConfirmed) values (?,?,?,?,?,?,?,?,?,?,0)',
+            [formData.email, formData.name, formData.phone, formData.businessName, formData.minPrice, formData.maxPrice, formData.homepage, formData.categories, formData.desserts, formData.address]);
+
+        res.cookie("loginData", JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+            isAdmin: 0,
+            isBaker: 1
+        }));
 
         res.sendStatus(200);
     } catch (err) {
