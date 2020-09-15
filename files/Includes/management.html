@@ -19,12 +19,23 @@
 <body>
     <div id='navBar'></div>
     <main>
-        <div style="display: flex;justify-content: center;">
-            <a class="btn btn-primary" href="#" role="button">מחפש עוגה</a>
-            <a class="btn btn-primary" href="Includes/signup.html" role="button">הרשמה כקונדיטור</a>
-        </div>
+        <h1>קונדיטורים שמחכים לאישור</h1>
+        <table>
+            <thead>
+                <th>מייל</th>
+                <th>שם</th>
+                <th>טלפון</th>
+                <th>שם עסק</th>
+                <th>טווח מחירים</th>
+                <th>אתר בית</th>
+                <th>קטגוריות</th>
+                <th></th>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
     </main>
-    <footer id='Footer'></footer>
+    <footer id='Footer'>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -38,7 +49,7 @@
     </script>
     <script src="/JS/main.js"></script>
     <script src="/JS/masterpage.js"></script>
-
+    <script src="/JS/management.js"></script>
 </body>
 
 </html>

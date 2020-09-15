@@ -14,7 +14,7 @@ async function submitForm() {
     let formData = getFormData();
 
     if (validateForm(formData)) {
-        let response = await fetch("/api/signup", {
+        let response = await fetch("/api/signup/conditure", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -26,12 +26,7 @@ async function submitForm() {
             let body = await response.json();
             alert(body);
         } else {
-            localStorage.setItem('loginData', JSON.stringify({
-                email: formData.email,
-                password: formData.password,
-                name: formData.name
-            }));
-            location.replace('includes/orders.html');
+            location.replace('/includes/login.html');
         }
 
         return response.ok;

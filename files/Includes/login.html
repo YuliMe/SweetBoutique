@@ -19,10 +19,27 @@
 <body>
     <div id='navBar'></div>
     <main>
-        <div style="display: flex;justify-content: center;">
-            <a class="btn btn-primary" href="#" role="button">מחפש עוגה</a>
-            <a class="btn btn-primary" href="Includes/signup.html" role="button">הרשמה כקונדיטור</a>
-        </div>
+        <form onsubmit="return submitForm()">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">מייל</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        placeholder="הכנס כתובת מייל" required>
+                    <small id="emailHelp" class="form-text text-muted">הכנס כתובת מייל</small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password">סיסמה</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        aria-describedby="passwordHelp" placeholder="סיסמה" required>
+                    <small id="passwordHelp" class="form-text text-muted">יש להזין סיסמה</small>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">התחבר</button>
+        </form>
+
     </main>
     <footer id='Footer'></footer>
 
@@ -38,7 +55,7 @@
     </script>
     <script src="/JS/main.js"></script>
     <script src="/JS/masterpage.js"></script>
-
+    <script src="/JS/login.js"></script>
 </body>
 
 </html>
