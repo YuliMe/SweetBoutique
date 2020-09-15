@@ -1,0 +1,7 @@
+* {
+    text-align: start;
+}
+
+main>div>* {
+    padding: 1vh;
+}

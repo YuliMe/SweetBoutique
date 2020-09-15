@@ -21,9 +21,6 @@ $(document).ready(async () => {
     setCategories("dessertsGroup", desserts);
     setCategories("categoriesGroup", categories);
 
-    document.querySelectorAll('input').forEach(i => {
-        i.addEventListener('focus', e => i.setCustomValidity(''));
-    })
     var placesAutocomplete = places({
         appId: 'plMG7UTLTJ0G',
         apiKey: '658e0a072c4fa950e8b4816f9effa6f6',
@@ -84,7 +81,7 @@ function search() {
 }
 
 function order(email) {
-    location.replace('/ordercake.html?email=' + email);
+    location.replace('/includes/ordercake.html?email=' + email);
 }
 
 function getFormData() {

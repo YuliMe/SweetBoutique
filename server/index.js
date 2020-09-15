@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var cookieParser = require("cookie-parser");
+const {
+    v4: uuidv4
+} = require('uuid');
 const app = express();
 var router = express.Router();
 const PORT = 3000;
@@ -20,6 +23,26 @@ app.get('/api/manage/getapprovals', async (req, res) => {
 app.post('/api/manage/approve', async (req, res) => {
     let [rows, fields] = await query('update bakers set isConfirmed = 1 where email = ?', [req.body.email]);
     res.sendStatus(200);
+});
+
+app.get("/api/getConditure/:email", async (req, res) => {
+    let [rows, fields] = await query('select * from bakers where isConfirmed = 1 and email = ?', [req.params.email]);
+    if (rows.length === 1) {
+        res.send(rows[0]);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
+app.post('/api/ordercake', async (req, res) => {
+    let formData = req.body;
+    let uuid = uuidv4();
+    let [rows, fields] = await query('insert into orders (orderNumber,conditureEmail,customerAddress,customerName,customerPhone,customerEmail,orderForDate, comments,isReady) VALUES(?,?,?,?,?,?,?,?,0)', [uuid, formData.conditureEmail, formData.customerAddress, formData.customerName, formData.customerPhone, formData.customerEmail, formData.orderDate, formData.comments]);
+    if (rows.affectedRows === 1) {
+        res.send(JSON.stringify(uuid));
+    } else {
+        res.sendStatus(404);
+    }
 });
 
 app.get('/api/getConditures', async (req, res) => {
@@ -50,7 +73,6 @@ app.post('/api/signup/conditure', async (req, res) => {
         res.status(500).send(JSON.stringify(err.message));
     }
 });
-
 
 app.post('/api/login', async (req, res) => {
     let formData = req.body;
