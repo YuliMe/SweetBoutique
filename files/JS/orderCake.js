@@ -64,7 +64,7 @@ async function orderCake() {
 
         if (resp.ok) {
             let orderId = await resp.json();
-            location.replace('/includes/orderdetails.html?orderid=' + orderId)
+            location.replace('/includes/orderdetails.html?orderId=' + orderId)
         } else {
             alert('שגיאה בהזמנת העוגה');
         }

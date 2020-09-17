@@ -14,6 +14,19 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static('files'));
 app.use('/api/manage/*', checkIsAdmin);
+app.use('/api/conditure/*', checkIsBaker);
+
+app.get('/api/conditure/getOrders', async (req, res) => {
+    let loginData = JSON.parse(req.cookies.loginData);
+    let [rows, fields] = await query('select * from orders where isReady = 0 and conditureEmail = ?', [loginData.email]);
+    res.send(rows);
+});
+
+app.post('/api/conditure/finishOrder', async (req, res) => {
+    let loginData = JSON.parse(req.cookies.loginData);
+    let [rows, fields] = await query('update orders set isReady = 1 where orderId = ? and conditureEmail = ?', [req.body.orderId, loginData.email]);
+    res.sendStatus(200);
+});
 
 app.get('/api/manage/getapprovals', async (req, res) => {
     let [rows, fields] = await query('select * from bakers where isConfirmed = 0');
@@ -34,8 +47,8 @@ app.get("/api/getConditure/:email", async (req, res) => {
     }
 });
 
-app.get("/api/getOrder/:orderid", async (req, res) => {
-    let [rows, fields] = await query('select orderid,isReady,timeOfOrder,orderForDate,comments,feedbackRating,feedbackComment from orders where orderid = ?', [req.params.orderid]);
+app.get("/api/getOrder/:orderId", async (req, res) => {
+    let [rows, fields] = await query('select orderId,isReady,timeOfOrder,orderForDate,comments,feedbackRating,feedbackComment from orders where orderId = ?', [req.params.orderId]);
     if (rows.length === 1) {
         res.send(rows[0]);
     } else {
@@ -46,7 +59,7 @@ app.get("/api/getOrder/:orderid", async (req, res) => {
 app.post('/api/ordercake', async (req, res) => {
     let formData = req.body;
     let uuid = uuidv4();
-    let [rows, fields] = await query('insert into orders (orderid,conditureEmail,customerAddress,customerName,customerPhone,customerEmail,orderForDate, comments,isReady) VALUES(?,?,?,?,?,?,?,?,0)', [uuid, formData.conditureEmail, formData.customerAddress, formData.customerName, formData.customerPhone, formData.customerEmail, formData.orderDate, formData.comments]);
+    let [rows, fields] = await query('insert into orders (orderId,conditureEmail,customerAddress,customerName,customerPhone,customerEmail,orderForDate, comments,isReady) VALUES(?,?,?,?,?,?,?,?,0)', [uuid, formData.conditureEmail, formData.customerAddress, formData.customerName, formData.customerPhone, formData.customerEmail, formData.orderDate, formData.comments]);
     if (rows.affectedRows === 1) {
         res.send(JSON.stringify(uuid));
     } else {
@@ -56,7 +69,7 @@ app.post('/api/ordercake', async (req, res) => {
 
 app.post('/api/sendfeedback', async (req, res) => {
     let formData = req.body;
-    let [rows, fields] = await query('update orders set feedbackRating = ?, feedbackComment = ? where orderid = ? and feedbackRating is null',
+    let [rows, fields] = await query('update orders set feedbackRating = ?, feedbackComment = ? where orderId = ? and feedbackRating is null',
         [formData.feedbackRating, formData.feedbackComment, formData.orderId]);
     res.sendStatus(200);
 });
@@ -137,6 +150,17 @@ async function checkIsAdmin(req, res, next) {
     let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from admins where email = ?) as isAdmin from users', [loginData.email, loginData.password, loginData.email]);
 
     if (rows[0].hasUser === 1 && rows[0].isAdmin === 1) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+async function checkIsBaker(req, res, next) {
+    let loginData = JSON.parse(req.cookies.loginData);
+    let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from bakers where email = ?) as isBaker', [loginData.email, loginData.password, loginData.email]);
+
+    if (rows[0].hasUser === 1 && rows[0].isBaker === 1) {
         next();
     } else {
         res.sendStatus(401);

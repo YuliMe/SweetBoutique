@@ -3,9 +3,9 @@ let order = null;
 async function getOrder() {
     const urlParams = new URLSearchParams(location.search);
 
-    let orderid = urlParams.get('orderid');
+    let orderId = urlParams.get('orderId');
 
-    let resp = await fetch('/api/getorder/' + orderid);
+    let resp = await fetch('/api/getorder/' + orderId);
 
     if (resp.ok) {
         order = await resp.json();
@@ -27,7 +27,7 @@ $(document).ready(() => {
 });
 
 function setOrderInfo() {
-    document.getElementById('orderid').innerHTML = order.orderid;
+    document.getElementById('orderId').innerHTML = order.orderId;
     document.getElementById('timeOfOrder').innerHTML = order.timeOfOrder;
     document.getElementById('orderForDate').innerHTML = order.orderForDate;
     document.getElementById('comments').innerHTML = order.comments;
@@ -46,7 +46,7 @@ async function sendFeedback() {
     event.preventDefault();
 
     let formData = Object.fromEntries(new FormData(document.querySelector("form")));
-    formData.orderId = order.orderid;
+    formData.orderId = order.orderId;
 
     let resp = await fetch('/api/sendfeedback', {
         method: 'POST',
