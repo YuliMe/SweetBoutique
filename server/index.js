@@ -12,7 +12,7 @@ const mysql = require('mysql2/promise');
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static('files'));
+app.use(express.static(__dirname + '../../files'));
 app.use('/api/manage/*', checkIsAdmin);
 app.use('/api/conditure/*', checkIsBaker);
 

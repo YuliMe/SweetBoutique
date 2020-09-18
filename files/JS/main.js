@@ -62,5 +62,5 @@ function getCookie(cname) {
 }
 
 function goToHomepage() {
-    location.replace("/index.html");
+    location.href = "/index.html";
 }

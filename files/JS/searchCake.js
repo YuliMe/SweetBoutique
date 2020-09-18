@@ -81,7 +81,7 @@ function search() {
 }
 
 function order(email) {
-    location.replace('/includes/ordercake.html?email=' + email);
+    location.href = '/Includes/ordercake.html?email=' + email;
 }
 
 function getFormData() {
