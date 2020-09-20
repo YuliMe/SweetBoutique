@@ -129,12 +129,15 @@ app.post('/api/login', async (req, res) => {
 app.get('/api/logoff', (req, res) => {
     res.clearCookie('loginData');
     res.sendStatus(200);
-})
+});
 
+app.get('/', (req, res) => {
+    res.redirect('/index.html');
+});
 
 app.listen(PORT, () => {
     console.log('started listening');
-})
+});
 
 function sqlConnection() {
     return mysql.createConnection({
