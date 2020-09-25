@@ -6,11 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
     <!-- Font Awesome icon kit-->
-    <script src="https://kit.fontawesome.com/c061aba482.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
+    <script src="/JS/c061aba482.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan Script" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
     <link rel="stylesheet" type="text/css" href="/CSS/ordercake.css">
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
@@ -19,109 +18,113 @@
 </head>
 
 <body>
-    <div id='navBar'></div>
+    <div id="navBar"></div>
     <main>
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <h1>פרטי קונדיטור</h1>
-                <div id="conditureInfo">
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="businessName">שם עסק</label>
-                            <div type="text" class="form-control" id="businessName" readonly></div>
+                <section class="background">
+                    <div id="conditureInfo">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="businessName">שם עסק</label>
+                                <div type="text" class="form-control" id="businessName" readonly></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="name">שם</label>
+                                <div type="text" class="form-control" id="name" readonly></div>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="name">שם</label>
-                            <div type="text" class="form-control" id="name" readonly></div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">טלפון</label>
+                                <div type="text" class="form-control" id="phone" readonly></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email">כתובת מייל</label>
+                                <div type="text" class="form-control" id="email" readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="address">כתובת</label>
+                                <div type="text" class="form-control" id="address" readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="homepage">אתר בית</label>
+                                <div type="text" class="form-control" id="homepage" readonly></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="desserts">קינוחים</label>
+                                <textarea type="text" class="form-control" id="desserts" rows="2" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="categories">קטגוריות נוספות</label>
+                                <textarea type="text" class="form-control" id="categories" rows="2" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="priceRange">טווח מחירים</label>
+                                <div type="text" class="form-control" id="priceRange" readonly></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="phone">טלפון</label>
-                            <div type="text" class="form-control" id="phone" readonly></div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="email">כתובת מייל</label>
-                            <div type="text" class="form-control" id="email" readonly></div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="address">כתובת</label>
-                            <div type="text" class="form-control" id="address" readonly></div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="homepage">אתר בית</label>
-                            <div type="text" class="form-control" id="homepage" readonly></div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="desserts">קינוחים</label>
-                            <textarea type="text" class="form-control" id="desserts" rows="2" readonly></textarea>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="categories">קטגוריות נוספות</label>
-                            <textarea type="text" class="form-control" id="categories" rows="2" readonly></textarea>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="priceRange">טווח מחירים</label>
-                            <div type="text" class="form-control" id="priceRange" readonly></div>
-                        </div>
-                    </div>
-                </div>
+                </section>
             </div>
             <div class="col-md-6 mb-3">
                 <h1>פרטי הזמנה</h1>
-                <form onsubmit="orderCake()">
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="customerName">שם</label>
-                            <input type="text" class="form-control" name="customerName" required>
+                <section class="background">
+                    <form onsubmit="orderCake()">
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="customerName">שם</label>
+                                <input type="text" class="form-control" name="customerName" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="customerPhone">טלפון</label>
-                            <input type="tel" class="form-control" name="customerPhone" required>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="customerPhone">טלפון</label>
+                                <input type="tel" class="form-control" name="customerPhone" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="customerEmail">אימייל</label>
-                            <input type="email" class="form-control" name="customerEmail" required>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="customerEmail">אימייל</label>
+                                <input type="email" class="form-control" name="customerEmail" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="orderDate">תאריך הזמנה</label>
-                            <input type="date" class="form-control" name="orderDate" required />
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="orderDate">תאריך הזמנה</label>
+                                <input type="date" class="form-control" name="orderDate" required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="customerAddress">כתובת</label>
-                            <input type="search" id="customerAddress" name="customerAddress" placeholder="כתובת" />
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="customerAddress">כתובת</label>
+                                <input type="search" id="customerAddress" name="customerAddress" placeholder="כתובת" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="comments">הערות</label>
-                            <textarea type="text" class="form-control" rows="5" name="comments"></textarea>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="comments">הערות</label>
+                                <textarea type="text" class="form-control" rows="5" name="comments"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">חפש</button>
-                </form>
+                        <button type="submit" class="btn buttons">חפש</button>
+                    </form>
+                </section>
             </div>
         </div>
     </main>
-    <footer id='Footer'></footer>
+    <footer id="Footer"></footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

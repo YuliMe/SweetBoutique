@@ -1,5 +1,4 @@
 async function loadApprovals() {
-
     document.getElementById('tableBody').innerHTML = '';
 
     let loginData = JSON.parse(getCookie('loginData'));
@@ -11,7 +10,7 @@ async function loadApprovals() {
             goToHomepage();
         } else {
             let waitingForApproval = await resp.json();
-
+            $('table').DataTable().clear().destroy();
             for (const baker of waitingForApproval) {
                 let row = $(`<tr>
                 <td>${baker.email}</td>
@@ -23,11 +22,16 @@ async function loadApprovals() {
                 <td>${baker.homepage}</td>
                 <td>${JSON.parse(baker.desserts).join()}</td>
                 <td>${JSON.parse(baker.categories).join()}</td>
-                <td><button class="btn btn-primary" onclick="approve('${baker.email}')">אשר</button></td>
+                <td><button class="btn buttons" onclick="approve('${baker.email}')">אשר</button></td>
                 </tr>`).get(0);
 
                 document.getElementById('tableBody').appendChild(row);
             }
+            $('table').DataTable({
+                language: {
+                    url: "/assets/files/Hebrew.json"
+                }
+            });
         }
     } else {
         goToHomepage();
@@ -52,4 +56,12 @@ async function approve(email) {
     }
 }
 
-loadApprovals();
+$(document).ready(() => {
+    $('table').DataTable({
+        destory: true,
+        language: {
+            url: "/assets/files/Hebrew.json"
+        }
+    });
+    loadApprovals();
+});

@@ -49,6 +49,7 @@ function search() {
     let searchParams = getFormData();
 
     if (validateForm()) {
+        $('table').DataTable().destroy();
         document.getElementById('tableBody').innerHTML = '';
         for (const conditure of conditures.filter(c =>
                 searchParams.categories.every(ad => c.categories.includes(ad)) && (
@@ -65,13 +66,18 @@ function search() {
             <td>${conditure.desserts.join()}</td>
             <td>${conditure.categories.join()}</td>
             <td>${calculateDistance(conditure.address.latlng,searchParams.address.latlng).toFixed(2)}Km</td>
-            <td><button class="btn btn-primary" onclick="order('${conditure.email}')">Match</button></td>
+            <td><button class="btn buttons" onclick="order('${conditure.email}')">Match</button></td>
             </tr>`).get(0);
 
             document.getElementById('tableBody').appendChild(row);
         }
-
-        $('.table').animate({
+        $('table').DataTable({
+            destroy: true,
+            language: {
+                url: "/assets/files/Hebrew.json"
+            }
+        });
+        $('#tablesection').animate({
             opacity: 1
         });
         return true;

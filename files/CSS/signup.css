@@ -2,7 +2,9 @@ form {
     display: flex;
     flex-direction: column;
     height: 100%;
+    align-items: center;
 }
+
 /* 
 .form-fields {
     overflow-y: auto;
@@ -10,8 +12,8 @@ form {
     flex-grow: 1;
 } */
 
-.form-group {
-    max-width: 500px;
+.form-row {
+    max-width: 66vw;
 }
 
 .price-range {

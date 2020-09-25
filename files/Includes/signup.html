@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/CSS/bootstrap.min.css">
     <!-- Font Awesome icon kit-->
     <script src="/JS/c061aba482.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan Script" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
     <link rel="stylesheet" type="text/css" href="/CSS/signup.css">
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
@@ -18,100 +18,103 @@
 </head>
 
 <body>
-    <div id='navBar'></div>
+    <div id="navBar"></div>
     <main>
         <form onsubmit="return submitForm()">
             <div class="form-fields">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="email">מייל</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            placeholder="הכנס כתובת מייל" required>
-                        <small id="emailHelp" class="form-text text-muted">הכנס כתובת מייל</small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="name">שם</label>
-                        <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
-                            placeholder="הכנס שם מלא" required>
-                        <small id="nameHelp" class="form-text text-muted">הכנס שם מלא</small>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="phone">טלפון</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
-                            placeholder="הכנס מספר טלפון" required>
-                        <small id="phoneHelp" class="form-text text-muted">הכנס מספר טלפון</small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="businessName">שם עסק</label>
-                        <input type="tel" class="form-control" id="businessName" name="businessName"
-                            aria-describedby="businessNameHelp" placeholder="הכנס שם עסק" required>
-                        <small id="businessNameHelp" class="form-text text-muted">הכנס שם עסק</small>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="minPrice">מיקום</label>
-                        <input type="search" id="address-input" name="address" placeholder="כתובת עסק" required />
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="minPrice">טווח מחירים</label>
-                        <div class="price-range">
-                            <input type="number" class="form-control" id="minPrice" name="minPrice" min="0" value="0"
-                                required>
-                            <p>עד</p>
-                            <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="0" required>
+                <section class="background">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">מייל</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                aria-describedby="emailHelp" placeholder="הכנס כתובת מייל" required>
+                            <small id="emailHelp" class="form-text text-muted">הכנס כתובת מייל</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">שם</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"
+                                placeholder="הכנס שם מלא" required>
+                            <small id="nameHelp" class="form-text text-muted">הכנס שם מלא</small>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
+                                placeholder="הכנס מספר טלפון" required>
+                            <small id="phoneHelp" class="form-text text-muted">הכנס מספר טלפון</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="businessName">שם עסק</label>
+                            <input type="text" class="form-control" id="businessName" name="businessName"
+                                aria-describedby="businessNameHelp" placeholder="הכנס שם עסק" required>
+                            <small id="businessNameHelp" class="form-text text-muted">הכנס שם עסק</small>
+                        </div>
+                    </div>
+                </section>
+                <div class="form-group col-md-12">
+                    <label for="minPrice">מיקום</label>
+                    <input type="search" id="address-input" name="address" placeholder="כתובת עסק" required />
                 </div>
+                <section class="background">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="minPrice">טווח מחירים</label>
+                            <div class="price-range">
+                                <input type="number" class="form-control" id="minPrice" name="minPrice" min="0"
+                                    value="0" required>
+                                <p>עד</p>
+                                <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="0"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="homepage">אתר בית</label>
+                            <input type="url" class="form-control" id="homepage" name="homepage"
+                                aria-describedby="homepageHelp" placeholder="הכנס כתובת אתר עסק" required>
+                            <small id="homepageHelp" class="form-text text-muted">יש להזין כתובת אתר של העסק</small>
+                        </div>
+                    </div>
+                </section>
+                <section class="background">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>סוגי קינוחים</label>
+                            <div class="checkboxGroup" id="dessertsGroup"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="background">
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="homepage">אתר בית</label>
-                        <input type="url" class="form-control" id="homepage" name="homepage"
-                            aria-describedby="homepageHelp" placeholder="הכנס כתובת אתר עסק" required>
-                        <small id="homepageHelp" class="form-text text-muted">יש להזין כתובת אתר של העסק</small>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>קטגוריות נוספות</label>
+                            <div class="checkboxGroup" id="categoriesGroup"></div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>סוגי קינוחים</label>
-                        <div class="checkboxGroup" id="dessertsGroup"></div>
+                </section>
+                <section class="background">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="password">סיסמה</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                aria-describedby="passwordHelp" placeholder="סיסמה" required>
+                            <small id="passwordHelp" class="form-text text-muted">יש להזין סיסמה</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="confPassword">אימות סיסמה</label>
+                            <input type="password" class="form-control" id="confPassword" name="confPassword"
+                                aria-describedby="confPasswordHelp" placeholder="אימות סיסמה" required>
+                            <small id="confPasswordHelp" class="form-text text-muted">יש להזין סיסמה בשנית</small>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>קטגוריות נוספות</label>
-                        <div class="checkboxGroup" id="categoriesGroup"></div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="password">סיסמה</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            aria-describedby="passwordHelp" placeholder="סיסמה" required>
-                        <small id="passwordHelp" class="form-text text-muted">יש להזין סיסמה</small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="confPassword">אימות סיסמה</label>
-                        <input type="password" class="form-control" id="confPassword" name="confPassword"
-                            aria-describedby="confPasswordHelp" placeholder="אימות סיסמה" required>
-                        <small id="confPasswordHelp" class="form-text text-muted">יש להזין סיסמה בשנית</small>
-                    </div>
-                </div>
+                </section>
             </div>
 
-            <button type="submit" class="btn btn-primary" onclick="validateForm()">הירשם</button>
+            <button type="submit" class="btn buttons" onclick="validateForm()">הירשם</button>
         </form>
     </main>
-    <footer id='Footer'>
+    <footer id="Footer">
     </footer>
 
     <!-- Optional JavaScript -->

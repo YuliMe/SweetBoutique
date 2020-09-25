@@ -9,6 +9,9 @@ main {
     flex-grow: 1;
     overflow-y: auto;
     padding: 1vh;
+    background-image: url('/assets/imgs/cupcakesbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -70,9 +73,6 @@ header {
     background-color: pink;
     border-width: medium;
     font-weight: bold;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 20px;
 }
 
 .reviewbox {
@@ -100,3 +100,45 @@ button {
     display: flex;
     align-items: center;
 }
+
+section.background {
+    background-color: white;
+    opacity: 0.85;
+    border-style: solid;
+    border-color: white;
+    border-radius: 20px;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+table.dataTable thead .sorting {
+    background-image: url("/assets/imgs/sort_both.png");
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url("/assets/imgs/sort_asc.png");
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: url("/assets/imgs/sort_desc.png");
+}
+
+table.dataTable thead .sorting_asc_disabled {
+    background-image: url("/assets/imgs/sort_asc_disabled.png");
+}
+
+table.dataTable thead .sorting_desc_disabled {
+    background-image: url("/assets/imgs/sort_desc_disabled.png");
+}
+
+#algolia-autocomplete-container .aa-dropdown-menu {
+    position: absolute;
+    margin-top: -1px;
+    right: 0px;
+    width: 100%;
+    z-index: 10000000 !important;
+    border: 1px solid #BBB;
+    border-top: 3px solid #8EB4D0;
+    border-radius: 1px;
+    background: white;
+  }   

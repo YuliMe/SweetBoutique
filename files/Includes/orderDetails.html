@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+
     <!-- Font Awesome icon kit-->
-    <script src="https://kit.fontawesome.com/c061aba482.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
+    <script src="/JS/c061aba482.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan Script" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
     <link rel="stylesheet" type="text/css" href="/CSS/orderdetails.css">
 
@@ -18,10 +18,10 @@
 </head>
 
 <body>
-    <div id='navBar'></div>
+    <div id="navBar"></div>
     <main>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
+        <section class="background">
+            <div class="col-md-12 mb-3">
                 <h1>פרטי הזמנה</h1>
                 <div class="form-row">
                     <div class="col-md-12 mb-3">
@@ -54,28 +54,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-3" id="feedback">
-                <h1>משוב</h1>
-                <form onsubmit="sendFeedback()">
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="feedbackRating">דירוג</label>
-                            <div class="rating"> 0 <input type="range" min="0" max="5" class="form-control"
-                                    name="feedbackRating" id="feedbackRating" required>5
-                            </div>
+        </section>
+        <section class="background" id="feedback">
+            <h1>משוב</h1>
+            <form onsubmit="sendFeedback()">
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="feedbackRating">דירוג</label>
+                        <div class="rating"> 0 <input type="range" min="0" max="5" class="form-control"
+                                name="feedbackRating" id="feedbackRating" required>5
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="feedbackComment">משוב</label>
-                            <textarea class="form-control" id="feedbackComment" name="feedbackComment"></textarea>
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="feedbackComment">משוב</label>
+                        <textarea class="form-control" id="feedbackComment" name="feedbackComment"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="sendFeedbackButton">חפש</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" class="btn buttons" id="sendFeedbackButton">חפש</button>
+            </form>
     </main>
-    <footer id='Footer'></footer>
+    <footer id="Footer"></footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

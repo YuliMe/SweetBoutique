@@ -1,0 +1,10 @@
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.form-row {
+    max-width: 66vw;
+}

@@ -11,7 +11,7 @@ async function loadOrders() {
             goToHomepage();
         } else {
             let waitingForApproval = await resp.json();
-
+            $('table').DataTable().clear().destroy();
             for (const order of waitingForApproval) {
                 let row = $(`<tr>
                 <td>${order.orderId}</td>
@@ -22,11 +22,16 @@ async function loadOrders() {
                 <td>${order.comments}</td>
                 <td>${order.timeOfOrder}</td>
                 <td>${order.orderForDate}</td>
-                <td><button class="btn btn-primary" onclick="finishOrder('${order.orderId}')">סיים הזמנה</button></td>
+                <td><button class="btn buttons" onclick="finishOrder('${order.orderId}')">סיים הזמנה</button></td>
                 </tr>`).get(0);
 
                 document.getElementById('tableBody').appendChild(row);
             }
+            $('table').DataTable({
+                language: {
+                    url: "/assets/files/Hebrew.json"
+                }
+            });
         }
     } else {
         goToHomepage();
@@ -51,4 +56,11 @@ async function finishOrder(orderId) {
     }
 }
 
-loadOrders();
+$(document).ready(() => {
+    loadOrders();
+    $('table').DataTable({
+        language: {
+            url: "/assets/files/Hebrew.json"
+        }
+    });
+});
