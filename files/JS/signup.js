@@ -3,6 +3,7 @@ function getFormData() {
 
     formData.minPrice = parseInt(formData.minPrice);
     formData.maxPrice = parseInt(formData.maxPrice);
+    formData.maxDist = parseInt(formData.maxDist);
 
     formData.desserts = Array.from(document.getElementById("dessertsGroup").querySelectorAll("input")).filter(e => e.checked).map(e => e.value);
     formData.categories = Array.from(document.getElementById("categoriesGroup").querySelectorAll("input")).filter(e => e.checked).map(e => e.value);
@@ -29,6 +30,7 @@ async function submitForm() {
             let body = await response.json();
             alert(body);
         } else {
+            alert('תודה שנרשמת, לאחר אישורך ע"י מנהל תופיע במאגר הקונדיטורים.');
             goToHomepage();
         }
 
@@ -77,9 +79,9 @@ $(document).ready(() => {
         address = {
             name: e.suggestion.value,
             latlng: e.suggestion.latlng
-        }
+        };
     });
 
     setCategories("dessertsGroup", desserts);
     setCategories("categoriesGroup", categories);
-})
+});

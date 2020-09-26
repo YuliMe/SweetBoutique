@@ -52,6 +52,7 @@ async function approve(email) {
     if (!resp.ok) {
         goToHomepage();
     } else {
+        alert('הקודניטור אושר בהצלחה ונשלח אליו מייל');
         loadApprovals();
     }
 }

@@ -6,19 +6,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Font Awesome icon kit-->
-    <script src="/JS/c061aba482.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Kaushan Script" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c061aba482.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
     <link rel="stylesheet" type="text/css" href="/CSS/signup.css">
+
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
     <title>Sweet Boutique</title>
 </head>
 
 <body>
-    <div id="navBar"></div>
+    <div id='navBar'></div>
     <main>
         <form onsubmit="return submitForm()">
             <div class="form-fields">
@@ -27,7 +29,7 @@
                         <div class="form-group col-md-6">
                             <label for="email">מייל</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                aria-describedby="emailHelp" placeholder="הכנס כתובת מייל" required>
+                                aria-describedby="emailHelp" placeholder="הכנס כתובת מייל" required disabled>
                             <small id="emailHelp" class="form-text text-muted">הכנס כתובת מייל</small>
                         </div>
                         <div class="form-group col-md-6">
@@ -101,29 +103,12 @@
                         </div>
                     </div>
                 </section>
-                <section class="background">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="password">סיסמה</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                aria-describedby="passwordHelp" placeholder="סיסמה" required>
-                            <small id="passwordHelp" class="form-text text-muted">יש להזין סיסמה</small>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="confPassword">אימות סיסמה</label>
-                            <input type="password" class="form-control" id="confPassword" name="confPassword"
-                                aria-describedby="confPasswordHelp" placeholder="אימות סיסמה" required>
-                            <small id="confPasswordHelp" class="form-text text-muted">יש להזין סיסמה בשנית</small>
-                        </div>
-                    </div>
-                </section>
             </div>
 
-            <button type="submit" class="btn buttons" onclick="validateForm()">הירשם</button>
+            <button type="submit" class="btn buttons" onclick="validateForm()">עדכן פרטים</button>
         </form>
     </main>
-    <footer id="Footer">
-    </footer>
+    <footer id='Footer'></footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -132,7 +117,8 @@
     <script src="/JS/bootstrap.min.js"></script>
     <script src="/JS/main.js"></script>
     <script src="/JS/masterpage.js"></script>
-    <script src="/JS/signup.js"></script>
+    <script src="/JS/personalarea.js"></script>
+
 </body>
 
 </html>

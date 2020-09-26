@@ -50,8 +50,7 @@ async function orderCake() {
     event.preventDefault();
     let formData = Object.fromEntries(new FormData(document.querySelector("form")));
     formData.conditureEmail = conditure.email;
-    if (customerAddress === null) {
-        alert('יש לבחור כתובת');
+    if (!validateForm(formData)) {
         return false;
     } else {
         let resp = await fetch('/api/orderCake', {
@@ -81,4 +80,20 @@ function setOrderInfo() {
     document.getElementById('desserts').innerHTML = conditure.desserts.join();
     document.getElementById('categories').innerHTML = conditure.categories.join();
     document.getElementById('priceRange').innerHTML = conditure.maxPrice + " - " + conditure.minPrice;
+}
+
+function validateForm(formData) {
+    let valid = true;
+
+    if (customerAddress === null) {
+        alert("יש לבחור כתובת");
+        valid = false;
+    }
+
+    if (new Date(formData.orderDate) < new Date()) {
+        alert('יש לבחור תאריך לאחר היום');
+        valid = false;
+    }
+
+    return valid;
 }

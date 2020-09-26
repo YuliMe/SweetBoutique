@@ -49,27 +49,19 @@ function search() {
     let searchParams = getFormData();
 
     if (validateForm()) {
-        $('table').DataTable().destroy();
-        document.getElementById('tableBody').innerHTML = '';
+        document.getElementById('results').innerHTML = '';
         for (const conditure of conditures.filter(c =>
                 searchParams.categories.every(ad => c.categories.includes(ad)) && (
                     searchParams.desserts.length === 0 || searchParams.desserts.some(d => c.desserts.includes(d)))
-            ).sort((a, b) => calculateDistance(a.address.latlng, searchParams.address.latlng) - calculateDistance(b.address.latlng, searchParams.address.latlng))) {
-            let row = $(`<tr>
-            <td>${conditure.email}</td>
-            <td>${conditure.name}</td>
-            <td>${conditure.phone}</td>
-            <td>${conditure.businessName}</td>
-            <td>${conditure.address.name}</td>
-            <td>${conditure.maxPrice} - ${conditure.minPrice}</td>
-            <td>${conditure.homepage}</td>
-            <td>${conditure.desserts.join()}</td>
-            <td>${conditure.categories.join()}</td>
-            <td>${calculateDistance(conditure.address.latlng,searchParams.address.latlng).toFixed(2)}Km</td>
-            <td><button class="btn buttons" onclick="order('${conditure.email}')">Match</button></td>
-            </tr>`).get(0);
+            ).filter(a => a.maxDist > calculateDistance(a.address.latlng, searchParams.address.latlng)).sort((a, b) => calculateDistance(a.address.latlng, searchParams.address.latlng) - calculateDistance(b.address.latlng, searchParams.address.latlng))) {
+            let row = $(`<div class="result-row">
+            <div>${conditure.businessName}/${conditure.name}</div>
+            <div>${conditure.address.name}</div>
+            <div>${conditure.maxPrice} - ${conditure.minPrice}</div>
+            <button class="btn buttons" onclick="order('${conditure.email}')">Match</button>
+            </div>`).get(0);
 
-            document.getElementById('tableBody').appendChild(row);
+            document.getElementById('results').appendChild(row);
         }
         $('table').DataTable({
             destroy: true,

@@ -23,16 +23,6 @@ body {
     padding-top: 3.5rem;
 }
 
-.jumbotron {
-    background-color: orange;
-    background-image: url("/Includes/img/cupcakesbg.jpg");
-    background-size: cover;
-    max-width: 100%;
-    height: auto;
-    background-position: center;
-}
-
-
 .img-bg-text {
     text-shadow: #888 2px 2px 3px;
     font-size: 1.5em;
@@ -49,7 +39,7 @@ body {
     direction: rtl;
 }
 
-h1 {
+.kaushan{
     font-family: 'Kaushan Script';
 }
 
@@ -141,4 +131,18 @@ table.dataTable thead .sorting_desc_disabled {
     border-top: 3px solid #8EB4D0;
     border-radius: 1px;
     background: white;
-  }   
+}
+
+.align-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#showtell {
+    background-color: white;
+}
+
+header>*{
+    text-align: center;
+}

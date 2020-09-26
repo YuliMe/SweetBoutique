@@ -28,10 +28,10 @@ $(document).ready(() => {
 
 function setOrderInfo() {
     document.getElementById('orderId').innerHTML = order.orderId;
-    document.getElementById('timeOfOrder').innerHTML = order.timeOfOrder;
-    document.getElementById('orderForDate').innerHTML = order.orderForDate;
+    document.getElementById('timeOfOrder').innerHTML = new Date(order.timeOfOrder).toLocaleDateString();
+    document.getElementById('orderForDate').innerHTML = new Date(order.orderForDate).toLocaleDateString();
     document.getElementById('comments').innerHTML = order.comments;
-    document.getElementById('isReady').innerHTML = order.isReady ? 'מוכן' : 'בהכנה';
+    document.getElementById('isReady').innerHTML = order.isReady ? 'מוכן' : 'ההזמנה נרשמה, הקונדיטור ייצור עימך קשר';
     if (order.feedbackRating !== null) {
         document.getElementById('feedbackRating').setAttribute('disabled', true);
         document.getElementById('feedbackComment').setAttribute('disabled', true);

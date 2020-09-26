@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
     let loginData = JSON.parse(getCookie('loginData'));
 
     if (loginData) {

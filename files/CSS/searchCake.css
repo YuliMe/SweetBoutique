@@ -26,3 +26,24 @@ form {
     opacity: 0;
     transition: '1s';
 }
+
+#results {
+    display: flex;
+    flex-direction: column;
+}
+
+.result-row {
+    width: 100%;
+    display: flex;
+    background: lightblue;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
+.result-row>div {
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+    margin-left: 1vh;
+}

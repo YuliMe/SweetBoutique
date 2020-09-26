@@ -8,18 +8,23 @@ $(document).ready(function () {
 
         if (loginData) {
             $("#loginLink").remove();
-
+            $("#helloText").text("שלום " + loginData.name);
             if (loginData.isAdmin !== 1) {
                 $("#adminLink").remove();
             }
 
             if (loginData.isBaker !== 1) {
                 $("#bakerLink").remove();
+                $("#personalareaLink").remove();
+            } else {
+                $("#navBakerSignupLink").remove();
             }
         } else {
             $("#logoffLink").remove();
             $("#adminLink").remove();
             $("#bakerLink").remove();
+            $("#hello").remove();
+            $("#personalareaLink").remove();
         }
     });
-})
+});
