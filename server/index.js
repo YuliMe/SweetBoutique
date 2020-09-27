@@ -116,7 +116,9 @@ app.post('/api/sendfeedback', async (req, res) => {
 });
 
 app.get('/api/getConditures', async (req, res) => {
-    let [rows, fields] = await query('select * from bakers where isConfirmed = 1');
+    let [rows, fields] = await query(`select *,
+    (select avg(feedbackRating) from orders where email = conditureEmail and feedbackRating is not null) as avg,
+    (select count(feedbackRating) from orders where email = conditureEmail and feedbackRating is not null) as count from bakers`);
     res.send(rows);
 });
 
@@ -195,7 +197,7 @@ function sqlConnection() {
 
 async function checkIsAdmin(req, res, next) {
     let loginData = JSON.parse(req.cookies.loginData);
-    let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from admins where email = ?) as isAdmin from users', [loginData.email, loginData.password, loginData.email]);
+    let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from admins where email = ?) as isAdmin', [loginData.email, loginData.password, loginData.email]);
 
     if (rows[0].hasUser === 1 && rows[0].isAdmin === 1) {
         next();

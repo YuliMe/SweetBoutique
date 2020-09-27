@@ -54,10 +54,16 @@ function search() {
                 searchParams.categories.every(ad => c.categories.includes(ad)) && (
                     searchParams.desserts.length === 0 || searchParams.desserts.some(d => c.desserts.includes(d)))
             ).filter(a => a.maxDist > calculateDistance(a.address.latlng, searchParams.address.latlng)).sort((a, b) => calculateDistance(a.address.latlng, searchParams.address.latlng) - calculateDistance(b.address.latlng, searchParams.address.latlng))) {
+            let feedback = 'לקונדיטור זה אין דירוג עדיין';
+            if (conditure.count !== 0) {
+                feedback = `${conditure.count} מדרגים,דירוג ממוצע: ${conditure.avg}`;
+            }
             let row = $(`<div class="result-row">
             <div>${conditure.businessName}/${conditure.name}</div>
             <div>${conditure.address.name}</div>
-            <div>${conditure.maxPrice} - ${conditure.minPrice}</div>
+            <div>טווח מחירים: ${conditure.maxPrice} - ${conditure.minPrice}</div>
+            <div>${feedback}</div>
+            <div>${calculateDistance(conditure.address.latlng, searchParams.address.latlng).toFixed(2)}Km</div>
             <button class="btn buttons" onclick="order('${conditure.email}')">Match</button>
             </div>`).get(0);
 
