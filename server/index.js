@@ -155,13 +155,17 @@ app.post('/api/login', async (req, res) => {
         let [rows, fields] = await query('select (select count(*) from users where email = ? and password = ?) as hasUser,(select count(*) from bakers where email = ?) as isBaker,(select count(*) from admins where email = ?) as isAdmin',
             [formData.email, formData.password, formData.email, formData.email]);
         let [nameRow] = await query('select name from bakers where email = ?', [formData.email]);
+        let name = '';
+        if (nameRow.length === 1) {
+            name = nameRow[0].name;
+        }
         if (rows[0].hasUser === 1) {
             res.cookie("loginData", JSON.stringify({
                 email: formData.email,
                 password: formData.password,
                 isAdmin: rows[0].isAdmin,
                 isBaker: rows[0].isBaker,
-                name: nameRow[0].name
+                name: name
             }));
             res.send(rows[0]);
         } else {
